@@ -1,2 +1,1 @@
-# rewynd-io-spec
-
+# rewynd-spec
