@@ -97,20 +97,23 @@ paths:
             schema:
               $ref: "#/components/schemas/ChangePasswordRequest"
 
-  /api/user/progress/latest:
+  /api/user/progress/list:
     post:
-      operationId: listLatestUserProgress
+      operationId: listProgress
       security:
         - CookieAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ListProgressRequest"
       responses:
         200:
           description: "Successfully returned latest media."
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/Progress"
+                $ref: "#/components/schemas/ListProgressResponse"
 
   /api/user/progress/get/{id}:
     get:
@@ -1156,6 +1159,28 @@ components:
         - "Season"
         - "Show"
         - "Movie"
+
+    ListProgressRequest:
+      type: object
+      properties:
+        minPercent:
+          type: number
+        maxPercent:
+          type: number
+        limit:
+          type: number
+        cursor:
+          $ref: "#/components/schemas/Progress"
+
+    ListProgressResponse:
+      type: object
+      properties:
+        cursor:
+          $ref: "#/components/schemas/Progress"
+        results:
+          type: array
+          items:
+            $ref: "#/components/schemas/Progress"
 
     ChangePasswordRequest:
       type: object
