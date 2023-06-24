@@ -1,6 +1,6 @@
 {
   "name": "@rewynd.io/rewynd-spec",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "AGPLv3",
   "description": "OpenAPI Specification for the public api of Rewynd.io",
   "repository": {
